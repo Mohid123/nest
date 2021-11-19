@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import { IsString, isInt, IsInt } from "class-validator";
+import { IsString, IsInt } from "class-validator";
 
 export class JobDto {
     @IsString()
