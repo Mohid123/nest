@@ -4,12 +4,12 @@ import { JobsService } from './jobs.service';
 import { JobDto } from './jobs.dto';
 import { HttpException } from '@nestjs/common';
 import { HttpStatus } from '@nestjs/common';
-import { HttpExceptionFilter } from 'src/filters/http-exception.filter';
+//import { HttpExceptionFilter } from 'src/filters/http-exception.filter';
 import { ValidationPipe } from 'src/pipes/validation.pipe';
 
 
 @Controller('jobs')
-@UseFilters(HttpExceptionFilter)
+//@UseFilters(HttpExceptionFilter)
 export class JobsController {
     constructor(private readonly jobService: JobsService) { }
 
