@@ -1,10 +1,11 @@
 /* eslint-disable prettier/prettier */
-import { Controller, Get, Post, Put, Delete, Body, Param, UseFilters } from '@nestjs/common';
+import { Controller, Get, Post, Put, Delete, Body, Param, UseFilters, UsePipes } from '@nestjs/common';
 import { JobsService } from './jobs.service';
 import { JobDto } from './jobs.dto';
 import { HttpException } from '@nestjs/common';
 import { HttpStatus } from '@nestjs/common';
 import { HttpExceptionFilter } from 'src/filters/http-exception.filter';
+import { ValidationPipe } from 'src/pipes/validation.pipe';
 
 
 @Controller('jobs')
@@ -43,6 +44,7 @@ export class JobsController {
     }
 
     @Post('newJob')
+    @UsePipes(new ValidationPipe())
     async postNewJob(@Body() jobsDto: JobDto) {
         const newJob = this.jobService.postJob(jobsDto);
         return newJob.then((result) => {
