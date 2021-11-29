@@ -15,3 +15,6 @@ export class AuditMiddleware implements NestMiddleware {
     }
 
 }
+
+//This middleware is being used to check the response of the delete request inside the console...
+//The response shows: what was selected, what the headers applied were and what was the path of the request being sent

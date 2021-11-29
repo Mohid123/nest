@@ -1,5 +1,11 @@
 /* eslint-disable prettier/prettier */
-import { MiddlewareConsumer, Module, NestModule, RequestMethod } from '@nestjs/common';
+import {
+    //CacheModule,
+    MiddlewareConsumer,
+    Module,
+    NestModule,
+    RequestMethod
+} from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 
 import { JobSchema } from './jobs.schema';
@@ -8,7 +14,12 @@ import { JobsService } from './jobs.service';
 import { AuditMiddleware } from 'src/middleware/audit.middleware';
 
 @Module({
-    imports: [MongooseModule.forFeature([{ name: 'Job', schema: JobSchema }])],
+    imports: [MongooseModule.forFeature([{ name: 'Job', schema: JobSchema }]),
+    // CacheModule.register({
+    //     ttl: 5, //seconds
+    //     max: 100 //maximum number of items in cache
+    // })
+],
     controllers: [JobsController],
     providers: [JobsService],
 })

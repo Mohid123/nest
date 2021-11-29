@@ -26,7 +26,7 @@ export class JobsService {
     async updateJob(id, jobdto: JobDto) {
         const JobTitle = this.jobModel.findOne({ _id: id });
         if (JobTitle) {
-            const updatedJob = await this.jobModel.updateOne({ ...jobdto });
+            const updatedJob = await this.jobModel.findByIdAndUpdate(id, jobdto);
             return updatedJob;
         }
         else if (!JobTitle) {
